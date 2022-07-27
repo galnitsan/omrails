@@ -46,7 +46,13 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    autoprefixer-rails (10.4.7.0)
+      execjs (~> 2)
     bindex (0.8.1)
+    bootstrap (4.0.0)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     builder (3.2.4)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -85,6 +91,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8-x64-mingw32)
       racc (~> 1.4)
+    popper_js (1.16.0)
     prettier (3.2.0)
       syntax_tree (>= 2.7.1)
       syntax_tree-haml (>= 1.1.0)
@@ -177,6 +184,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bootstrap (~> 4.0.0.alpha4)
   byebug
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
