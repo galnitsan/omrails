@@ -1,35 +1,47 @@
 <div class="container">
 
-<h1>Tweets</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tweets.each do |tweet| %>
-      <tr>
-        <td><%= tweet.user.email %></td>
-        <td><%= tweet.content %></td>
-        <td><%= link_to 'Show', tweet %></td>
-        <% if tweet.user == current_user %>
-           <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-           <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<div class="row">
+    <div class="col-md-4">
+      <% if user_signed_in? %>
+       <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Your account</h5>
+              <p class="card-text"> <%= current_user.email %></p>
+            </div>
+      </div>
+        <% else %>
+          <p> Please sign up to post tweets! </p>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    </div>
 
-<br>
+    <div class="col-md-8">
 
-<% if user_signed_in? %>
- <%= link_to 'New Tweet', new_tweet_path %>
-<% end %>
+     <% if user_signed_in? %>
+       <center><%= link_to 'New Tweet', new_tweet_path %></center>
+     <% end %>
 
+     <ul class="list-group">
+       <% @tweets.each do |tweet| %>
+        <li class="list-group-item">
+            <h5 class="List-group-item-heading"><%= tweet.user.email %></h5>
+            <p class="list-group-item-text"><%= tweet.content %></p>
+            <td class="text-center"> Total Comments : <span class="badge badge-primary badge-pill"><%= tweet.comments.count(:body) %></span></td>
+            <p class="list-group-item-text">
+            <%= link_to 'Show', tweet %>
+          <% if tweet.user == current_user %>
+            <%= link_to 'Edit', edit_tweet_path(tweet) %>
+            <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+             </p>
+        </li>
+       <% end %>
+      </ul>
+
+   <% if user_signed_in? %>
+    <%= link_to 'New Tweet', new_tweet_path %>
+   <% end %>
+  </div>
+
+ </div>
 </div>

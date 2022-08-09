@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :tweets
+  resources :items
+  resources :tweets do
+      resources :comments
+  end
   ActiveAdmin.routes(self)
   devise_for :users
   as :user do

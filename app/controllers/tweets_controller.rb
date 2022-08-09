@@ -9,6 +9,7 @@ class TweetsController < ApplicationController
   # GET /tweets/1
   def show
     @tweet = Tweet.find(params[:id])
+    @comment = @tweet.comments.create()
   end
 
   # GET /tweets/new
