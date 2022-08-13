@@ -1,19 +1,11 @@
 <div class="container">
-
 <div class="row">
     <div class="col-md-4">
       <% if user_signed_in? %>
        <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title"><%= @user.username %></h5>
-              <p class="card-text"><%= @user.name %></p>
-              <% if current_user.following?(@user) %>
-                 <p class="card-text"><%= link_to "Unfollow", unfollow_user_path(@user.username),
-                   method: :delete %></p>
-              <% else %>
-                  <p class="card-text"><%= link_to "Follow", follow_user_path(@user.username),
-                  method: :post %></p>
-              <% end %>
+              <h5 class="card-title">Your account</h5>
+              <p class="card-text"> <%=link_to current_user.username, user_path(current_user.username) %></p>
             </div>
       </div>
         <% else %>
@@ -23,7 +15,9 @@
 
     <div class="col-md-8">
 
-   
+     <% if user_signed_in? %>
+       <center><%= link_to 'New Tweet', new_tweet_path %></center>
+     <% end %>
 
      <ul class="list-group">
        <% @tweets.each do |tweet| %>
@@ -31,16 +25,17 @@
             <h5 class="List-group-item-heading"><%= tweet.user.username%></h5>
             <p class="list-group-item-text"><%= tweet.content %></p>
             <td class="text-center"> Total Comments : <span class="badge badge-primary badge-pill"><%= tweet.comments.count(:body) %></span></td>
-            
-
+            <p class="list-group-item-text">
+            <%= link_to 'Show', tweet %>
+          <% if tweet.user == current_user %>
+            <%= link_to 'Edit', edit_tweet_path(tweet) %>
+            <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
              </p>
         </li>
        <% end %>
       </ul>
 
-   <% if user_signed_in? %>
-    <%= link_to 'New Tweet', new_tweet_path %>
-   <% end %>
   </div>
 
  </div>

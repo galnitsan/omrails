@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
 
+  # GET /comments 
+  def index
+    @comments = Comment.all
+  end
 
     def create
         @tweet = Tweet.find(params[:tweet_id])

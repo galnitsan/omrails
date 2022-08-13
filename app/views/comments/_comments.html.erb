@@ -1,9 +1,5 @@
-<h3>Comments ( Grid style )</h3>
-
-<div class="row ">
+<h3>Comments</h3>
   <% @tweet.comments.each do |comment| %>
-  <div class="col-sm-4 border border-danger">
-    <p><strong><%= comment.username %></strong>: <%= comment.body %></p>
-  </div>
+    <p><strong><%= comment.username %></strong> <%= comment.body %></p>
   <% end %>
-</div>
+<hr />
