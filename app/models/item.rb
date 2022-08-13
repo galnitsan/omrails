@@ -3,4 +3,7 @@ class Item < ApplicationRecord
 
   validates :user, presence: true
   validates :title, presence: true, length: {minimum: 4}
+  
+  acts_as_votable
+
 end
