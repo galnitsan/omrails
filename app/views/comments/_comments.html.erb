@@ -1,5 +1,9 @@
+<div id="comments">
 <h3>Comments</h3>
   <% @tweet.comments.each do |comment| %>
     <p><strong><%= comment.username %></strong> <%= comment.body %></p>
   <% end %>
 <hr />
+</div>
+<div id="error_explanation"></div>
+

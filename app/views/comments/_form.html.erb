@@ -1,7 +1,8 @@
 <div class="container">
 <h3>Add Comment</h3>
 
-<%= form_for([@tweet, @tweet.comments.build]) do |f| %>
+<%= form_for([@tweet, @tweet.comments.build], remote: true) do |f| %>
+
 
  <p>
     <%= f.label :username %><br>
@@ -14,5 +15,6 @@
   <p>
      <%= f.submit({:class => 'btn btn-default'}) %>
   </p>
+  
 <% end %>
 </div>

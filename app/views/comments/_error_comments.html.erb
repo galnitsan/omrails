@@ -1,0 +1,8 @@
+<div>
+    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+</div>

@@ -9,11 +9,15 @@ class CommentsController < ApplicationController
         @tweet = Tweet.find(params[:tweet_id])
         @comment = @tweet.comments.create(comment_params)
 
-        if @comment.save
-           redirect_to tweet_path(@tweet), notice: "Item was successfully created." 
-         else
-           redirect_to tweet_path(@tweet), notice: "there was a problem." 
-        end
+        respond_to do |format|
+         if @comment.save
+           format.html { redirect_to tweet_path(@tweet), notice: "Item was successfully created." }
+           format.js 
+          else
+           format.html { redirect_to tweet_path(@tweet), notice: "there was a problem." }
+           format.js
+         end
+       end
     end
 
     private def comment_params
