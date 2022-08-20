@@ -1,0 +1,11 @@
+<% if @tweet.errors.any? %>
+    document.querySelector('#error_explanation_tweet').innerHTML = "<%= j render "errorTweets" %>"
+<% else %>
+    $("#error_explanation_tweet").empty();
+
+    $("#tweetsList").prepend("<%= escape_javascript render('tweets', tweet: @tweet) %>");
+    $(".close-modal").click();
+<% end %>
+
+
+

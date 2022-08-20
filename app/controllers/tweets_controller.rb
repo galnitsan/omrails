@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.order(created_at: :desc)
   end
 
   # GET /tweets/1
@@ -25,11 +25,16 @@ class TweetsController < ApplicationController
   # POST /tweets
   def create
     @tweet = current_user.tweets.new(tweet_params)
+
+    respond_to do |format|
     if @tweet.save
-      redirect_to @tweet, notice: 'Tweet was successfully created.'
+     format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
+     format.js
     else
-      render :new 
+     format.html { render :new } 
+     format.js
     end
+   end
   end
 
   # PATCH/PUT /tweets/1

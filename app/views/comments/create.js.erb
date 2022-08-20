@@ -1,10 +1,8 @@
 <% if @comment.errors.any? %>
     document.querySelector('#error_explanation').innerHTML = "<%= j render "comments/error_comments" %>"
-      
 <% else %>
       document.querySelector('#error_explanation').remove() 
       comments = document.getElementById("comments") 
       comments.innerHTML = "<%= j render "comments/comments" %>"
       document.querySelector('#new_comment').reset();
-
 <% end %>

@@ -17,30 +17,38 @@
     <div class="col-md-8">
 
      <% if user_signed_in? %>
-       <center><%= link_to 'New Tweet', new_tweet_path %></center>
+       <center><%= link_to 'New Tweet', new_tweet_path, data: { toggle: 'modal', target: '#newTweetModal', remote: true } %></center>
      <% end %>
 
-     <ul class="list-group">
-       <% @tweets.each do |tweet| %>
-        <li class="list-group-item">
-            <h5 class="List-group-item-heading"><%= tweet.user.username%></h5>
-            <p class="list-group-item-text"><%= tweet.content %></p>
-            <td class="text-center"> Total Comments : <span class="badge badge-primary badge-pill"><%= tweet.comments.count(:body) %></span></td>
-            <p class="list-group-item-text">
-            <%= link_to 'Show', tweet %>
-          <% if tweet.user == current_user %>
-            <%= link_to 'Edit', edit_tweet_path(tweet) %>
-            <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-             </p>
-        </li>
-       <% end %>
+     <div id="tweetsList">
+       <ul class="list-group">
+         <% @tweets.each do |tweet| %>
+            <%= render 'tweets', tweet: tweet %>
+         <% end %>
       </ul>
-
-   <% if user_signed_in? %>
-    <%= link_to 'New Tweet', new_tweet_path %>
-   <% end %>
+     </div>
+     
   </div>
 
  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="newTweetModal" tabindex="-1" role="dialog" aria-labelledby="newTweetModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div id="error_explanation_tweet"></div>
+        <h5 class="modal-title" id="newTweetModalLabel">Create New Tweet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="newTweetForm">
+      </div>
+    </div>
+  </div>
 </div>
