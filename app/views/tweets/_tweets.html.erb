@@ -1,7 +1,9 @@
          <li class="list-group-item">
             <h5 class="List-group-item-heading"><%= tweet.user.username%></h5>
             <p class="list-group-item-text"><%= tweet.content %></p>
-            <td class="text-center"> Total Comments : <span class="badge badge-primary badge-pill"><%= tweet.comments.count(:body) %></span></td>
+            <td class="text-center"> Total Comments : <span title="<% tweet.comments.each do |comment| %><%= comment.username %> :  <%= comment.body %> 
+              <% end %>"
+             class="badge badge-primary badge-pill"><%= tweet.comments.count(:body) %></span></td>
             <p class="list-group-item-text">
             <%= link_to 'Show', tweet %>
           <% if tweet.user == current_user %>
@@ -10,4 +12,12 @@
           <% end %>
              </p>
         </li>
+
+        
+
+        
+
+
+
+        
        

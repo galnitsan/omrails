@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   def index
     @tweets = Tweet.order(created_at: :desc)
+    @comments = Comment.all
   end
 
   # GET /tweets/1

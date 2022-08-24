@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
   # GET /comments 
   def index
     @comments = Comment.all
+    
+    
   end
 
     def create
