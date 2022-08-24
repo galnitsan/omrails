@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :validate_change, only: [:edit, :destroy]
 
   # GET /tweets
   def index
@@ -60,6 +61,16 @@ class TweetsController < ApplicationController
     def tweet_params
       params.require(:tweet).permit(:content)
     end
+
+    def validate_change
+    @tweet = current_user.tweets.find(params[:id])
+      if @tweet.created_at < 5.seconds.ago
+       redirect_to :back, notice: '5 seconds passed. Tweet cannot be changed.'
+      end
+  end
+
+
+
 
     
 end
