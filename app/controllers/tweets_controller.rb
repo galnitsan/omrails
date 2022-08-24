@@ -68,9 +68,5 @@ class TweetsController < ApplicationController
        redirect_to :back, notice: '5 seconds passed. Tweet cannot be changed.'
       end
   end
-
-
-
-
     
 end
