@@ -25,10 +25,6 @@
          
            </ul>
         <ul class="nav navbar-nav ml-auto">
-          <% if user_signed_in? %>
-            <li class="nav-item"><%= link_to "Log out", signout_path, method: :delete, class: "nav-link" %></li>
-
-        
              <li class="nav-item dropdown show"><%= link_to "Resources Menu", "#", class: "nav-link dropdown-toggle", role: "menu", id: "navbarDropdown", data: { toggle: 'dropdown' }%>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                <%= link_to "All Tweets", tweets_path, class: "dropdown-item"%>
@@ -40,6 +36,12 @@
                <%= link_to "Admin", "admin", class: "dropdown-item"%>
             </div>
           </li>
+
+          <% if user_signed_in? %>
+            <li class="nav-item"><%= link_to "Log out", signout_path, method: :delete, class: "nav-link" %></li>
+
+        
+             
 
           <%else %>
             <li class="nav-item"><%= link_to "Sign Up", signup_path, class: "btn btn-primary" %></li>

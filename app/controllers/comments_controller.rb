@@ -4,10 +4,9 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
     
-    
   end
 
-    def create
+  def create
         @tweet = Tweet.find(params[:tweet_id])
         @comment = @tweet.comments.create(comment_params)
 
