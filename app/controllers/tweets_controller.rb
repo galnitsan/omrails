@@ -6,12 +6,15 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.order(created_at: :desc)
     @comments = Comment.all
+    
   end
 
   # GET /tweets/1
   def show
+    @tweets = Tweet.order(created_at: :desc)
     @tweet = Tweet.find(params[:id])
     @comment = @tweet.comments.create()
+    @comments = Comment.all
   end
 
   # GET /tweets/new

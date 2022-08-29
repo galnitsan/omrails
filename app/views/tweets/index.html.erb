@@ -1,57 +1,66 @@
+<button id="myButton3" data-tippy-content="It works">
+  Tooltip All Comments
+</button>
 <div class="container">
-
-
-<div class="row">
+  <div class="row">
     <div class="col-md-4">
       <% if user_signed_in? %>
-       <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Your account</h5>
-              <p class="card-text"> <%=link_to current_user.username, user_path(current_user.username) %></p>
-            </div>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">Your account</h5>
+          <p class="card-text">
+            <%=link_to current_user.username, user_path(current_user.username)
+            %>
+          </p>
+        </div>
       </div>
-        <% else %>
-          <p> Please sign up to post tweets! </p>
-        <% end %>
+      <% else %>
+      <p>Please sign up to post tweets!</p>
+      <% end %>
     </div>
 
     <div class="col-md-8">
+      <% if user_signed_in? %>
+      <center>
+        <%= link_to 'New Tweet', new_tweet_path, data: { toggle: 'modal',
+        target: '#newTweetModal', remote: true } %>
+      </center>
+      <% end %>
 
-     <% if user_signed_in? %>
-       <center><%= link_to 'New Tweet', new_tweet_path, data: { toggle: 'modal', target: '#newTweetModal', remote: true } %></center>
-     <% end %>
-
-     <div id="tweetsList">
-       <ul class="list-group">
-         <% @tweets.each do |tweet| %>
-            <%= render 'tweets', tweet: tweet %>
-         <% end %>
-      </ul>
-     </div>
-     
+      <div id="tweetsList">
+        <ul class="list-group">
+          <% @tweets.each do |tweet| %> <%= render 'tweets', tweet: tweet %> <%
+          end %>
+        </ul>
+      </div>
+    </div>
   </div>
-
- </div>
 </div>
 
-
-
-
-
-
 <!-- Modal -->
-<div class="modal fade" id="newTweetModal" tabindex="-1" role="dialog" aria-labelledby="newTweetModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="newTweetModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="newTweetModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <div id="error_explanation_tweet"></div>
         <h5 class="modal-title" id="newTweetModalLabel">Create New Tweet</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div id="newTweetForm">
-      </div>
+      <div id="newTweetForm"></div>
     </div>
   </div>
 </div>

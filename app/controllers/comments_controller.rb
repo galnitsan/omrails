@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   # GET /comments 
   def index
     @comments = Comment.all
+    @tweets = Tweet.order(created_at: :desc)
     
   end
 

@@ -1,0 +1,11 @@
+I"ê(function() {
+  window.tippy = tippy;
+
+  tippy("#singleElement", {
+    content: "Hi I am working"
+  });
+
+  console.log("hey2");
+
+}).call(this);
+:ET

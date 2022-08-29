@@ -33,6 +33,7 @@ gem "devise"
 gem "activeadmin", "~> 1.0.0.pre4"
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'acts_as_votable'
+gem 'tippy_rails', '~> 2.5'
 
 
 group :development, :test do

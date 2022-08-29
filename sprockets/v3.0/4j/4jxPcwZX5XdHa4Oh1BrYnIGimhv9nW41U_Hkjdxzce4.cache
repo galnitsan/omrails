@@ -1,0 +1,9 @@
+I"{(function() {
+  tippy("#singleElement", {
+    content: "Hi I am working"
+  });
+
+  console.log("hey");
+
+}).call(this);
+:ET
