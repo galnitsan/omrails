@@ -1,6 +1,6 @@
 <h1>Advanced Tweet Search</h1>
 
-<%= form_for @tweet_search, html: {class: "pure-form"} do |s| %>
+<%= form_for @tweet_search, remote: true, html: {class: "pure-form"} do |s| %>
 
 <div class="field">
     <%= s.label :keywords %><br />
@@ -16,3 +16,6 @@
 
 <% end %>
 
+<div id="results">
+    
+</div>

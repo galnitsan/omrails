@@ -1,0 +1,33 @@
+<div id="results">
+<h1>Search Results</h1>
+
+<p><%= link_to "back", new_tweet_search_path %></p>
+
+<% if @tweet_search.search_tweets.empty? %>
+
+  <p>No Tweets Found</p>
+
+<% else %>
+
+<table class="table table-striped table-bordered" style="width:50%">
+  <thead>
+    <tr>
+      <th scope="col" style="width:40%">Tweet Content</th>
+      <th scope="col" style="width:20%">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tweet_search.search_tweets.each do |c| %>
+      <tr>
+         <td><%= c.content %></td>
+         <td><%= c.user.username %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+   
+
+<% end %>
+   
+</div>
