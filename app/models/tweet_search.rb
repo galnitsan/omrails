@@ -1,5 +1,5 @@
 class TweetSearch < ApplicationRecord
-
+    
     def search_tweets
         tweets = Tweet.all
         tweets = tweets.where(["content LIKE ?", "%#{keywords}%"]) if keywords.present?

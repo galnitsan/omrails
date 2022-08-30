@@ -9,7 +9,7 @@
 
 <div class="field">
     <%= s.label :user_id %><br />
-    <%= s.select :user_id, options_for_select(@user_ids), :include_blank => true %>
+    <%= s.select :user_id, options_from_collection_for_select(User.all, :id, :username), :include_blank => true %>
 </div>
 
 <div class="actions"><%= s.submit "Search", class: "pure-button pure-button-primary" %></div>

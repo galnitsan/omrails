@@ -3,6 +3,8 @@ class TweetSearchesController < ApplicationController
     def new
         @tweet_search = TweetSearch.new
         @user_ids = Tweet.uniq.pluck(:user_id)
+        
+        
     end
 
     def create
@@ -18,7 +20,7 @@ class TweetSearchesController < ApplicationController
     private
 
     def tweet_search_params
-        params.require(:tweet_search).permit(:keywords, :user_id)
+        params.require(:tweet_search).permit(:keywords, :user_id, :username)
     end
 end
 

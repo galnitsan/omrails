@@ -8,18 +8,18 @@
 
 <% else %>
 
-<table class="table table-striped table-bordered" style="width:40%">
+<table class="table table-striped table-bordered" style="width:50%">
   <thead>
     <tr>
       <th scope="col" style="width:40%">Tweet Content</th>
-      <th scope="col" style="width:20%">User</th>
+      <th scope="col" style="width:20%">Username</th>
     </tr>
   </thead>
   <tbody>
     <% @tweet_search.search_tweets.each do |c| %>
       <tr>
          <td><%= c.content %></td>
-         <td>user_id: <%= c.user_id %></td>
+         <td><%= c.user.username %></td>
       </tr>
     <% end %>
   </tbody>
