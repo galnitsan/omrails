@@ -27,6 +27,8 @@ Rails.application.routes.draw do
       resources :comments
   end
   
+  resources :tweet_searches
+  
   root 'pages#home'
   get 'about' => 'pages#about'
   get 'contact_us' => 'pages#contact_us'
