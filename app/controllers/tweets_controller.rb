@@ -9,6 +9,27 @@ class TweetsController < ApplicationController
     
   end
 
+  def search
+   @tweets = Tweet.where(["content LIKE ? AND user_id LIKE ?", "%#{params[:content]}%", "%#{params[:user_id]}%"]) 
+   conditions = []
+    
+    # if !params[:content].nil? and !params[:user_id].nil?
+    #    conditions <<  "content LIKE ? AND user_id LIKE ?, \'%#{params[:content]}%\', '%#{params[:user_id]}%'"
+    # end
+
+    # if params[:content]
+    #     conditions << 'content LIKE ?,'
+    #     conditions.last <<  "%#{params[:content]}%"
+    # end
+
+    # if params[:user_id]
+    #     conditions << 'user_id LIKE ?,'
+    #     conditions.last <<  "%#{params[:user_id]}%"
+    # end
+
+    # @tweets = Tweet.where(conditions)
+  end
+
   # GET /tweets/1
   def show
     @tweets = Tweet.order(created_at: :desc)

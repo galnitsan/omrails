@@ -1,0 +1,22 @@
+
+<h1>Advanced Tweet Search</h1>
+
+<%= form_tag({controller: "tweets", action: "search"}, method: "get") do %>
+
+<div class="field">
+    <%= label_tag(:content, "search for:" ) %>
+    <%= text_field_tag(:content) %>
+</div>
+
+<div class="field">
+    <%= label_tag(:user_id) %><br />
+    <%= select_tag (:user_id), options_from_collection_for_select(User.all, :id, :username), :include_blank => true %>
+</div>
+
+<div class="actions"><%= submit_tag("Search") %></div>
+
+<% end %>
+
+<div id="results">
+    <%= render 'search' %>
+</div>

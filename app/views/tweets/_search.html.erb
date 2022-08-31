@@ -1,0 +1,29 @@
+<h2>Tweets found: <%= @tweets.size %></h2>
+
+<%if @tweets.empty? %>
+   <p>Sorry, no tweets found.</p>
+
+   <% else %>
+ 
+<table class="table table-striped table-bordered" style="width:50%">
+  <thead>
+    <tr>
+      <th scope="col" style="width:40%">Tweet Content</th>
+      <th scope="col" style="width:20%">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+         <td><%= tweet.content %></td>
+         <td><%= tweet.user.username %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+   <% end %>
