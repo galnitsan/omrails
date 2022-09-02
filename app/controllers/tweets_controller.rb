@@ -15,18 +15,17 @@ class TweetsController < ApplicationController
    
    conditions = ['1=1',{}] 
 
-    # if !params[:content].blank? && !params[:user_id].blank?
-    #  conditions <<  " content LIKE ? AND user_id LIKE ?" << "%#{params[:content]}%" << "%#{params[:user_id]}%"
-    # end
+    
 
       if params[:content].present?
           conditions.first << " and content like :content" 
           conditions.last.merge!(:content => "%#{params[:content]}%")
       end
 
-    #  if params[:content].present?
-    #     conditions << " and user_id LIKE ?" << "%#{params[:user_id]}%" 
-    #  end
+      if params[:user_id].present?
+          conditions.first << " and user_id like :user_id" 
+          conditions.last.merge!(:user_id => "%#{params[:user_id]}%")
+      end
        
       @tweets = Tweet.where(conditions)
   end
