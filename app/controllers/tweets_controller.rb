@@ -11,23 +11,24 @@ class TweetsController < ApplicationController
 
   def search
    #@tweets = Tweet.where(["content LIKE ? AND user_id LIKE ?", "%#{params[:content]}%", "%#{params[:user_id]}%"]) 
+   #@tweets = Tweet.where(["content like :content and user_id like :user_id", { :content => "%#{params[:content]}%", :user_id => "%#{params[:user_id]}%" }]) 
    
-   conditions = [] 
+   conditions = ['1=1',{}] 
 
-   if !params[:content].blank? && !params[:user_id].blank?
-     conditions <<  " content LIKE ? AND user_id LIKE ?" << "%#{params[:content]}%" << "%#{params[:user_id]}%"
+    # if !params[:content].blank? && !params[:user_id].blank?
+    #  conditions <<  " content LIKE ? AND user_id LIKE ?" << "%#{params[:content]}%" << "%#{params[:user_id]}%"
+    # end
 
-   end
+      if params[:content].present?
+          conditions.first << " and content like :content" 
+          conditions.last.merge!(:content => "%#{params[:content]}%")
+      end
 
-     if !params[:content].blank? && params[:user_id].blank?
-        conditions << " content LIKE ?" << "%#{params[:content]}%" 
-     end
-
-     if params[:content].blank? && !params[:user_id].blank?
-        conditions << " user_id LIKE ?" << "%#{params[:user_id]}%" 
-     end
+    #  if params[:content].present?
+    #     conditions << " and user_id LIKE ?" << "%#{params[:user_id]}%" 
+    #  end
        
-     @tweets = Tweet.where(conditions)
+      @tweets = Tweet.where(conditions)
   end
 
   # GET /tweets/1
